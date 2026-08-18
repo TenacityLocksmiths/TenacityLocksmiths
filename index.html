@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tenacity Locksmiths | Automotive & Mobile Locksmith Melbourne</title>
+  <meta name="description" content="Tenacity Locksmiths - Professional mobile automotive locksmith services in Melbourne. Car key replacement, transponder programming, vehicle lockouts, lock repair and more." />
+  <meta name="theme-color" content="#1e3a8a" />
+
+  <style>
+    :root {
+      --blue: #1e3a8a;
+      --blue-dark: #1e3a8a;
+      --blue-light: #3b82f6;
+      --text: #1f2937;
+      --text-light: #4b5563;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    .hero-logo-img {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.3px;
+      line-height: 1.2;
+    }
+
+    .header-phone {
+      background: var(--blue);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .header-phone:hover {
+      background: #1e40af;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      background: linear-gradient(160deg, #1e3a8a 0%, #1e40af 100%);
+      color: white;
+      padding: 60px 20px 70px;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-logo {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-tagline {
+      font-size: 1.15rem;
+      opacity: 0.95;
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+
+    .hero-phone {
+      display: inline-block;
+      background: white;
+      color: var(--blue);
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .hero-phone:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    /* ========== SECTIONS ========== */
+    section {
+      padding: 60px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      font-size: 1.05rem;
+    }
+
+    /* ========== SERVICES ========== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 8px 24px rgba(30, 58, 138, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .service-icon {
+      width: 42px;
+      height: 42px;
+      background: #eff6ff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--blue);
+      font-size: 1.3rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 650;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* ========== ABOUT ========== */
+    .about {
+      background: var(--white);
+    }
+
+    .about-content {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .badge {
+      background: #eff6ff;
+      color: var(--blue);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ========== CONTACT ========== */
+    .contact-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 30px;
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+
+    .contact-box h2 {
+      font-size: 1.5rem;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .contact-box > p {
+      color: var(--text-light);
+      margin-bottom: 28px;
+    }
+
+    .contact-item {
+      display: block;
+      padding: 14px 20px;
+      margin-bottom: 12px;
+      background: var(--bg);
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: background 0.2s;
+    }
+
+    .contact-item:hover {
+      background: #e0e7ff;
+    }
+
+    .contact-item.phone {
+      background: var(--blue);
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .contact-item.phone:hover {
+      background: #1e40af;
+    }
+
+    .contact-note {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: #e5e7eb;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .logo-text {
+        font-size: 1rem;
+      }
+
+      .header-phone {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero {
+        padding: 50px 16px 60px;
+      }
+
+      .hero-phone {
+        font-size: 1.3rem;
+        padding: 12px 24px;
+        width: 100%;
+        max-width: 320px;
+      }
+
+      section {
+        padding: 48px 16px;
+      }
+
+      .service-card {
+        padding: 22px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <img src="logo.jpg" alt="Tenacity Locksmiths Logo" class="logo-img" />
+        <div class="logo-text">TENACITY<br>LOCKSMITHS</div>
+      </div>
+      <a href="tel:0458893888" class="header-phone">0458 893 888</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <img src="logo.jpg" alt="Tenacity Locksmiths" class="hero-logo-img" />
+      <h1>TENACITY LOCKSMITHS</h1>
+      <p class="hero-tagline">Automotive Specialist · Mobile Service</p>
+      <a href="tel:0458893888" class="hero-phone">0458 893 888</a>
+      <p class="hero-sub">Call or text · Melbourne & Surrounds</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">Professional automotive and mobile locksmith services when you need them most.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🔑</div>
+          <h3>Car Key Replacement</h3>
+          <p>Lost or damaged car keys replaced on the spot. We cut and program most makes and models.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📡</div>
+          <h3>Transponder & Remote Programming</h3>
+          <p>Programming of transponder chips, remote fobs and smart keys for reliable vehicle access.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🚗</div>
+          <h3>Vehicle Lockouts</h3>
+          <p>Locked out of your car? Fast, damage-free entry available across Melbourne.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">✂️</div>
+          <h3>Key Cutting</h3>
+          <p>Precision key cutting for vehicle and other keys. High quality duplicates made on site.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3>Lock Repair</h3>
+          <p>Repair of faulty vehicle locks, door mechanisms and related hardware.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔄</div>
+          <h3>Lock Recode</h3>
+          <p>Recoding of locks for security after key loss or when changing ownership.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🛠️</div>
+          <h3>Broken Key Extraction</h3>
+          <p>Safe removal of broken keys from ignitions, door locks and other mechanisms.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3>Key Fob Replacement</h3>
+          <p>Replacement and programming of modern key fobs and remote controls.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">Why Choose Tenacity</h2>
+        <p>We specialise in automotive locksmithing and provide a true mobile service. That means we come to you — whether you’re at home, at work, or stranded by the roadside.</p>
+        <p>Our focus is fast, professional help with car keys, lockouts and lock issues so you can get back on the road with minimal disruption.</p>
+        <div class="about-badges">
+          <span class="badge">Mobile Service</span>
+          <span class="badge">Automotive Specialist</span>
+          <span class="badge">Melbourne & Surrounds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <h2>Get In Touch</h2>
+        <p>Need help now? Call or send a message.</p>
+
+        <a href="tel:0458893888" class="contact-item phone">📞 0458 893 888</a>
+        <a href="mailto:tenacitylocksmiths@gmail.com" class="contact-item">✉️ tenacitylocksmiths@gmail.com</a>
+
+        <p class="contact-note">Mobile service across Melbourne and surrounding areas</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Tenacity Locksmiths</strong></p>
+    <p>Automotive Specialist · Mobile Service</p>
+    <p style="margin-top: 10px;">© 2026 Tenacity Locksmiths. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
