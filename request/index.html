@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Tenacity Locksmiths – Request Service</title>
+  <meta name="theme-color" content="#1e3a8a" />
+  <meta name="description" content="Request automotive locksmith service quickly – Tenacity Locksmiths Melbourne" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">T</div>
+      <div class="header-text">
+        <div class="brand">TENACITY LOCKSMITHS</div>
+        <div class="tagline">Automotive Specialist · Mobile Service</div>
+      </div>
+    </header>
+
+    <!-- Progress bar -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Main content -->
+    <main class="main" id="mainContent">
+
+      <!-- ========== STEP 1: What do you need? ========== -->
+      <section class="step active" id="step1" data-step="1">
+        <h1>What do you need?</h1>
+        <p class="subtitle">Select the option that best describes your situation</p>
+
+        <div class="option-group">
+          <h2 class="group-title">Emergency</h2>
+          
+          <button class="option-btn" data-value="I'm locked out" data-category="Emergency">
+            <span class="option-text">I'm locked out</span>
+          </button>
+
+          <button class="option-btn" data-value="I've lost my keys" data-category="Emergency">
+            <span class="option-text">I've lost my keys</span>
+          </button>
+
+          <button class="option-btn" data-value="Keys locked in vehicle" data-category="Emergency">
+            <span class="option-text">Keys locked in vehicle</span>
+          </button>
+        </div>
+
+        <div class="option-group">
+          <h2 class="group-title">I need a Key</h2>
+
+          <button class="option-btn" data-value="I need a spare key" data-category="Key">
+            <span class="option-text">I need a spare key</span>
+          </button>
+
+          <button class="option-btn" data-value="I have no keys" data-category="Key">
+            <span class="option-text">I have no keys</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ========== STEP 2: Contact & Location ========== -->
+      <section class="step" id="step2" data-step="2">
+        <h1>Your contact details</h1>
+        <p class="subtitle">We need these so we can reach you and find the job</p>
+
+        <div class="form-group">
+          <label for="phone">Phone number <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" inputmode="tel" required />
+          <div class="error-msg" id="phoneError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Job location / Address <span class="required">*</span></label>
+          <textarea id="location" name="location" rows="3" placeholder="Street address, suburb, or nearest landmark" required></textarea>
+          <div class="error-msg" id="locationError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Your name or Dealership name <span class="optional">(optional)</span></label>
+          <input type="text" id="name" name="name" placeholder="e.g. John or ABC Toyota" />
+        </div>
+
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" id="backToStep1">Back</button>
+          <button class="btn btn-primary" id="toStep3">Continue</button>
+        </div>
+      </section>
+
+      <!-- ========== STEP 3: Vehicle details ========== -->
+      <section class="step" id="step3" data-step="3">
+        <h1>Vehicle details</h1>
+        <p class="subtitle">This helps us bring the right equipment</p>
+
+        <div class="form-group">
+          <label for="manufacturer">Manufacturer <span class="required">*</span></label>
+          <input type="text" id="manufacturer" name="manufacturer" placeholder="e.g. Toyota, Holden, Ford, BMW" required />
+          <div class="error-msg" id="manufacturerError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="model">Model & Year <span class="required">*</span></label>
+          <input type="text" id="model" name="model" placeholder="e.g. Hilux 2019, Commodore 2015" required />
+          <div class="error-msg" id="modelError"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Start type <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-card">
+              <input type="radio" name="startType" value="Push start" />
+              <span class="radio-content">
+                <span class="radio-title">Push start</span>
+                <span class="radio-desc">Button start / keyless</span>
+              </span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="startType" value="Turn key start" />
+              <span class="radio-content">
+                <span class="radio-title">Turn key start</span>
+                <span class="radio-desc">Traditional key ignition</span>
+              </span>
+            </label>
+          </div>
+          <div class="error-msg" id="startTypeError"></div>
+        </div>
+
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" id="backToStep2">Back</button>
+          <button class="btn btn-primary" id="toStep4">Continue</button>
+        </div>
+      </section>
+
+      <!-- ========== STEP 4: Specific problem ========== -->
+      <section class="step" id="step4" data-step="4">
+        <h1>What’s the problem?</h1>
+        <p class="subtitle" id="problemSubtitle">Select the closest description</p>
+
+        <div id="problemOptions">
+          <!-- Options will be injected by JavaScript -->
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+          <label for="extraNotes">Anything else we should know? <span class="optional">(optional)</span></label>
+          <textarea id="extraNotes" name="extraNotes" rows="3" placeholder="Extra details that might help..."></textarea>
+        </div>
+
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" id="backToStep3">Back</button>
+          <button class="btn btn-primary" id="submitRequest">Submit Request</button>
+        </div>
+      </section>
+
+      <!-- ========== STEP 5: Confirmation ========== -->
+      <section class="step" id="step5" data-step="5">
+        <div class="success-icon">✓</div>
+        <h1>Request received</h1>
+        <p class="success-text">
+          Thanks. We’ve received your request and will contact you shortly on the number you provided.
+        </p>
+        <div class="summary-box" id="summaryBox">
+          <!-- Summary injected by JS -->
+        </div>
+        <p class="success-note">
+          If this is an urgent emergency and you don’t hear from us within a few minutes, please call us directly on <strong>0458 893 888</strong>.
+        </p>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <a href="tel:0458893888">0458 893 888</a> · Melbourne & Surrounds
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
