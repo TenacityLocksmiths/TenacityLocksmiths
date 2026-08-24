@@ -1,5 +1,5 @@
 // ======================
-// Tenacity Locksmiths – Phase 1 Customer Form
+// Tenacity Locksmiths – Phase 1 Customer Form (Improved)
 // ======================
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     submittedAt: null
   };
 
-  // Simple device fingerprint for basic anti-abuse
   function getDeviceId() {
     let id = localStorage.getItem("tenacity_device_id");
     if (!id) {
@@ -28,14 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return id;
   }
 
-  // Rate limiting – max 3 submissions per 2 hours from same device
   function canSubmit() {
     const key = "tenacity_submissions";
     const now = Date.now();
     let history = JSON.parse(localStorage.getItem(key) || "[]");
     history = history.filter(t => now - t < 2 * 60 * 60 * 1000);
-    if (history.length >= 3) return false;
-    return true;
+    return history.length < 3;
   }
 
   function recordSubmission() {
@@ -45,42 +42,57 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem(key, JSON.stringify(history));
   }
 
-  // ========== STEP MANAGEMENT ==========
   function goToStep(stepNumber) {
-    document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
+    // Hide all steps
+    document.querySelectorAll(".step").forEach(function(s) {
+      s.classList.remove("active");
+      s.style.display = "none";
+    });
+
+    // Show the target step
     const step = document.getElementById("step" + stepNumber);
-    if (step) step.classList.add("active");
+    if (step) {
+      step.classList.add("active");
+      step.style.display = "block";
+    }
 
-    const progress = (stepNumber / 5) * 100;
+    // Update progress bar
     const bar = document.getElementById("progressBar");
-    if (bar) bar.style.width = progress + "%";
+    if (bar) bar.style.width = (stepNumber / 5 * 100) + "%";
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo(0, 0);
   }
 
   // ========== STEP 1: Service selection ==========
-  document.querySelectorAll("#step1 .option-btn").forEach(btn => {
-    btn.addEventListener("click", function () {
-      formData.service = this.getAttribute("data-value");
-      formData.category = this.getAttribute("data-category");
-      goToStep(2);
+  function handleOptionClick(btn) {
+    formData.service = btn.getAttribute("data-value");
+    formData.category = btn.getAttribute("data-category");
+    goToStep(2);
+  }
+
+  document.querySelectorAll("#step1 .option-btn").forEach(function(btn) {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      handleOptionClick(this);
+    });
+    // Also support touch for mobile
+    btn.addEventListener("touchend", function(e) {
+      e.preventDefault();
+      handleOptionClick(this);
     });
   });
 
-  // ========== STEP 2: Contact ==========
-  const backToStep1 = document.getElementById("backToStep1");
-  if (backToStep1) {
-    backToStep1.addEventListener("click", () => goToStep(1));
-  }
+  // ========== STEP 2 ==========
+  var back1 = document.getElementById("backToStep1");
+  if (back1) back1.onclick = function() { goToStep(1); };
 
-  const toStep3 = document.getElementById("toStep3");
-  if (toStep3) {
-    toStep3.addEventListener("click", function () {
-      const phone = document.getElementById("phone").value.trim();
-      const location = document.getElementById("location").value.trim();
-      const name = document.getElementById("name").value.trim();
-
-      let valid = true;
+  var to3 = document.getElementById("toStep3");
+  if (to3) {
+    to3.onclick = function() {
+      var phone = document.getElementById("phone").value.trim();
+      var location = document.getElementById("location").value.trim();
+      var name = document.getElementById("name").value.trim();
+      var valid = true;
 
       if (!phone || phone.replace(/\s/g, "").length < 8) {
         document.getElementById("phoneError").textContent = "Please enter a valid phone number";
@@ -104,23 +116,20 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.location = location;
       formData.name = name;
       goToStep(3);
-    });
+    };
   }
 
-  // ========== STEP 3: Vehicle ==========
-  const backToStep2 = document.getElementById("backToStep2");
-  if (backToStep2) {
-    backToStep2.addEventListener("click", () => goToStep(2));
-  }
+  // ========== STEP 3 ==========
+  var back2 = document.getElementById("backToStep2");
+  if (back2) back2.onclick = function() { goToStep(2); };
 
-  const toStep4 = document.getElementById("toStep4");
-  if (toStep4) {
-    toStep4.addEventListener("click", function () {
-      const manufacturer = document.getElementById("manufacturer").value.trim();
-      const model = document.getElementById("model").value.trim();
-      const startType = document.querySelector('input[name="startType"]:checked');
-
-      let valid = true;
+  var to4 = document.getElementById("toStep4");
+  if (to4) {
+    to4.onclick = function() {
+      var manufacturer = document.getElementById("manufacturer").value.trim();
+      var model = document.getElementById("model").value.trim();
+      var startType = document.querySelector('input[name="startType"]:checked');
+      var valid = true;
 
       if (!manufacturer) {
         document.getElementById("manufacturerError").textContent = "Please enter the manufacturer";
@@ -151,116 +160,74 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.manufacturer = manufacturer;
       formData.model = model;
       formData.startType = startType.value;
-
       buildProblemOptions(formData.startType);
       goToStep(4);
-    });
+    };
   }
 
-  // ========== STEP 4: Problem selection ==========
+  // ========== STEP 4 ==========
   function buildProblemOptions(startType) {
-    const container = document.getElementById("problemOptions");
+    var container = document.getElementById("problemOptions");
     if (!container) return;
     container.innerHTML = "";
 
-    let options = [];
+    var options = startType === "Push start"
+      ? ["Car won't start", "My remote works but car won't start", "Remote / key fob not working", "Other / not sure"]
+      : ["Key won't go into the lock", "Lock won't turn", "Key turns but engine doesn't start", "Key is stuck in the ignition", "Other / not sure"];
 
-    if (startType === "Push start") {
-      options = [
-        "Car won't start",
-        "My remote works but car won't start",
-        "Remote / key fob not working",
-        "Other / not sure"
-      ];
-    } else {
-      options = [
-        "Key won't go into the lock",
-        "Lock won't turn",
-        "Key turns but engine doesn't start",
-        "Key is stuck in the ignition",
-        "Other / not sure"
-      ];
-    }
-
-    options.forEach(function (opt) {
-      const btn = document.createElement("button");
+    options.forEach(function(opt) {
+      var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "problem-btn";
       btn.textContent = opt;
-      btn.setAttribute("data-value", opt);
-      btn.addEventListener("click", function () {
-        document.querySelectorAll(".problem-btn").forEach(b => b.classList.remove("selected"));
-        this.classList.add("selected");
+      btn.onclick = function() {
+        document.querySelectorAll(".problem-btn").forEach(function(b) { b.classList.remove("selected"); });
+        btn.classList.add("selected");
         formData.problem = opt;
-      });
+      };
       container.appendChild(btn);
     });
   }
 
-  const backToStep3 = document.getElementById("backToStep3");
-  if (backToStep3) {
-    backToStep3.addEventListener("click", () => goToStep(3));
-  }
+  var back3 = document.getElementById("backToStep3");
+  if (back3) back3.onclick = function() { goToStep(3); };
 
   // ========== SUBMIT ==========
-  const submitBtn = document.getElementById("submitRequest");
+  var submitBtn = document.getElementById("submitRequest");
   if (submitBtn) {
-    submitBtn.addEventListener("click", async function () {
+    submitBtn.onclick = async function() {
       if (!formData.problem) {
-        let existingMsg = document.getElementById("problemSelectError");
-        if (!existingMsg) {
-          existingMsg = document.createElement("div");
-          existingMsg.id = "problemSelectError";
-          existingMsg.style.cssText = "background:#fef2f2;color:#dc2626;padding:12px 16px;border-radius:10px;margin-bottom:16px;font-weight:600;text-align:center;";
-          existingMsg.textContent = "Please tap one of the problem options above first";
-          const container = document.getElementById("problemOptions");
-          if (container) container.parentNode.insertBefore(existingMsg, container.nextSibling);
-        }
-        existingMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+        alert("Please select the problem that best describes your situation.");
         return;
       }
-
-      const oldMsg = document.getElementById("problemSelectError");
-      if (oldMsg) oldMsg.remove();
 
       if (!canSubmit()) {
-        alert("You have already submitted several requests recently. Please call us directly on 0458 893 888 if this is urgent.");
+        alert("You have already submitted several requests recently. Please call 0458 893 888 if urgent.");
         return;
       }
 
-      formData.extraNotes = (document.getElementById("extraNotes")?.value || "").trim();
+      formData.extraNotes = (document.getElementById("extraNotes") || {}).value || "";
       formData.submittedAt = new Date().toISOString();
       formData.deviceId = getDeviceId();
 
       submitBtn.textContent = "Sending...";
       submitBtn.disabled = true;
-      submitBtn.style.opacity = "0.7";
 
       try {
         await sendRequest(formData);
         recordSubmission();
         showConfirmation();
       } catch (err) {
-        console.error(err);
-        alert("Something went wrong sending the request. Please call us directly on 0458 893 888.");
+        alert("Something went wrong. Please call 0458 893 888.");
         submitBtn.textContent = "Submit Request";
         submitBtn.disabled = false;
-        submitBtn.style.opacity = "1";
       }
-    });
+    };
   }
 
-  // ========== SEND REQUEST ==========
   async function sendRequest(data) {
-    try {
-      const existing = JSON.parse(localStorage.getItem("tenacity_requests") || "[]");
-      existing.unshift(data);
-      localStorage.setItem("tenacity_requests", JSON.stringify(existing.slice(0, 100)));
-    } catch (e) {}
-
-    const endpoint = "https://formspree.io/f/myegbeev";
-
-    const payload = {
+    var endpoint = "https://formspree.io/f/myegbeev";
+    var payload = {
       _subject: "New Job Request – " + data.service,
       service: data.service,
       category: data.category,
@@ -272,10 +239,32 @@ document.addEventListener("DOMContentLoaded", function () {
       startType: data.startType,
       problem: data.problem,
       extraNotes: data.extraNotes || "None",
-      submittedAt: new Date(data.submittedAt).toLocaleString("en-AU"),
-      deviceId: data.deviceId
+      submittedAt: new Date(data.submittedAt).toLocaleString("en-AU")
     };
 
     try {
-      const response = await fetch(endpoint, {
+      await fetch(endpoint, {
         method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload)
+      });
+    } catch (e) {}
+    return true;
+  }
+
+  function showConfirmation() {
+    var box = document.getElementById("summaryBox");
+    if (box) {
+      box.innerHTML =
+        "<div><strong>Service:</strong> " + formData.service + "</div>" +
+        "<div><strong>Phone:</strong> " + formData.phone + "</div>" +
+        "<div><strong>Location:</strong> " + formData.location + "</div>" +
+        "<div><strong>Vehicle:</strong> " + formData.manufacturer + " " + formData.model + "</div>" +
+        "<div><strong>Problem:</strong> " + formData.problem + "</div>";
+    }
+    goToStep(5);
+  }
+
+  // Start on step 1
+  goToStep(1);
+});
