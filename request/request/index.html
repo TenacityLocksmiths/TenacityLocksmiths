@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Tenacity Locksmiths – Request Service</title>
+  <meta name="theme-color" content="#1e3a8a" />
+  <style>
+    :root {
+      --blue: #1e3a8a;
+      --blue-dark: #1e40af;
+      --bg: #f1f5f9;
+      --white: #ffffff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --error: #dc2626;
+      --success: #16a34a;
+      --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+    .app {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+    }
+    .header {
+      background: var(--blue);
+      color: white;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo {
+      width: 44px; height: 44px;
+      background: white; color: var(--blue);
+      font-weight: 800; font-size: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 10px;
+    }
+    .brand { font-weight: 700; font-size: 1.05rem; }
+    .tagline { font-size: 0.8rem; opacity: 0.9; margin-top: 2px; }
+    .progress-container { height: 4px; background: #e2e8f0; }
+    .progress-bar { height: 100%; background: #3b82f6; width: 25%; transition: width 0.3s; }
+    .main { flex: 1; padding: 24px 20px 40px; }
+    .step { display: none; }
+    .step.active { display: block; }
+    h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+    .subtitle { color: var(--text-light); font-size: 0.95rem; margin-bottom: 22px; }
+    .option-group { margin-bottom: 24px; }
+    .group-title {
+      font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.5px; color: var(--text-light); margin-bottom: 10px;
+    }
+    .option-btn {
+      width: 100%; padding: 16px 18px;
+      background: var(--white); border: 2px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 10px;
+      font-size: 1.05rem; font-weight: 500; color: var(--text);
+      cursor: pointer; text-align: center;
+    }
+    .option-btn:active { border-color: var(--blue); background: #eff6ff; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 7px; }
+    .required { color: var(--error); }
+    .optional { font-weight: 400; color: var(--text-light); font-size: 0.85rem; }
+    input, textarea {
+      width: 100%; padding: 14px 16px;
+      border: 2px solid var(--border); border-radius: 10px;
+      font-size: 1rem; font-family: inherit;
+    }
+    input:focus, textarea:focus { outline: none; border-color: var(--blue); }
+    .error-msg { color: var(--error); font-size: 0.85rem; margin-top: 5px; display: none; }
+    .error-msg.show { display: block; }
+    .radio-group { display: flex; flex-direction: column; gap: 10px; }
+    .radio-card {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px; border: 2px solid var(--border);
+      border-radius: var(--radius); cursor: pointer;
+    }
+    .radio-card.selected { border-color: var(--blue); background: #eff6ff; }
+    .radio-title { font-weight: 600; font-size: 1.05rem; }
+    .radio-desc { font-size: 0.85rem; color: var(--text-light); }
+    .nav-buttons { display: flex; gap: 12px; margin-top: 26px; }
+    .btn {
+      flex: 1; padding: 15px 18px; border-radius: 10px;
+      font-size: 1.05rem; font-weight: 600; border: none; cursor: pointer;
+    }
+    .btn-primary { background: var(--blue); color: white; }
+    .btn-primary:disabled { background: #94a3b8; }
+    .btn-secondary { background: var(--bg); color: var(--text); border: 2px solid var(--border); }
+    .success-icon {
+      width: 70px; height: 70px; background: #dcfce7; color: var(--success);
+      font-size: 2rem; font-weight: 700; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 10px auto 18px;
+    }
+    .success-text { text-align: center; color: var(--text-light); margin-bottom: 20px; }
+    .summary-box { background: var(--bg); border-radius: var(--radius); padding: 16px; margin-bottom: 20px; font-size: 0.95rem; }
+    .summary-box div { margin-bottom: 6px; }
+    .success-note { text-align: center; font-size: 0.9rem; color: var(--text-light); }
+    .footer {
+      text-align: center; padding: 14px; font-size: 0.85rem;
+      color: var(--text-light); border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="logo">T</div>
+      <div>
+        <div class="brand">TENACITY LOCKSMITHS</div>
+        <div class="tagline">Automotive Specialist · Mobile Service</div>
+      </div>
+    </header>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <main class="main">
+
+      <!-- STEP 1 -->
+      <section class="step active" id="step1">
+        <h1>What do you need?</h1>
+        <p class="subtitle">Select the option that best describes your situation</p>
+
+        <div class="option-group">
+          <h2 class="group-title">Emergency</h2>
+          <button type="button" class="option-btn" data-value="I'm locked out">I'm locked out</button>
+          <button type="button" class="option-btn" data-value="I've lost my keys">I've lost my keys</button>
+          <button type="button" class="option-btn" data-value="Keys locked in vehicle">Keys locked in vehicle</button>
+        </div>
+
+        <div class="option-group">
+          <h2 class="group-title">Key / Lock Issues</h2>
+          <button type="button" class="option-btn" data-value="I need a spare key">I need a spare key</button>
+          <button type="button" class="option-btn" data-value="I have no keys">I have no keys</button>
+          <button type="button" class="option-btn" data-value="Ignition lock not turning">Ignition lock not turning</button>
+          <button type="button" class="option-btn" data-value="Door lock not working">Door lock not working</button>
+          <button type="button" class="option-btn" data-value="Car won't start">Car won't start</button>
+          <button type="button" class="option-btn" data-value="I need locks recombined">I need locks recombined</button>
+        </div>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="step" id="step2">
+        <h1>Vehicle details</h1>
+        <p class="subtitle">This helps us bring the right equipment</p>
+
+        <div class="form-group">
+          <label>Manufacturer <span class="required">*</span></label>
+          <input type="text" id="manufacturer" placeholder="e.g. Toyota, Holden, Ford, BMW" />
+          <div class="error-msg" id="manufacturerError"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Model <span class="required">*</span></label>
+          <input type="text" id="model" placeholder="e.g. Hilux, Commodore, Ranger" />
+          <div class="error-msg" id="modelError"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Year <span class="required">*</span></label>
+          <input type="text" id="year" placeholder="e.g. 2019" inputmode="numeric" />
+          <div class="error-msg" id="yearError"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Start type <span class="required">*</span></label>
+          <div class="radio-group">
+            <div class="radio-card" id="radioPush">
+              <input type="radio" name="startType" value="Push start" />
+              <div>
+                <div class="radio-title">Push start</div>
+                <div class="radio-desc">Button start / keyless</div>
+              </div>
+            </div>
+            <div class="radio-card" id="radioTurn">
+              <input type="radio" name="startType" value="Turn key start" />
+              <div>
+                <div class="radio-title">Turn key start</div>
+                <div class="radio-desc">Traditional key ignition</div>
+              </div>
+            </div>
+          </div>
+          <div class="error-msg" id="startTypeError"></div>
+        </div>
+
+        <div class="nav-buttons">
+          <button type="button" class="btn btn-secondary" id="backTo1">Back</button>
+          <button type="button" class="btn btn-primary" id="toStep3">Continue</button>
+        </div>
+      </section>
+      <!-- STEP 3 -->
+      <section class="step" id="step3">
+        <h1>Your contact details</h1>
+        <p class="subtitle">So we can reach you and find the job</p>
+
+        <div class="form-group">
+          <label>Phone number <span class="required">*</span></label>
+          <input type="tel" id="phone" placeholder="04XX XXX XXX" inputmode="tel" />
+          <div class="error-msg" id="phoneError"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Job location / Address <span class="required">*</span></label>
+          <textarea id="location" rows="3" placeholder="Street address, suburb, or nearest landmark"></textarea>
+          <div class="error-msg" id="locationError"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Your name or Dealership <span class="optional">(optional)</span></label>
+          <input type="text" id="name" placeholder="e.g. John or ABC Toyota" />
+        </div>
+
+        <div class="form-group">
+          <label>Anything else we should know? <span class="optional">(optional)</span></label>
+          <textarea id="extraNotes" rows="2" placeholder="Extra details..."></textarea>
+        </div>
+
+        <div class="nav-buttons">
+          <button type="button" class="btn btn-secondary" id="backTo2">Back</button>
+          <button type="button" class="btn btn-primary" id="submitBtn">Submit Request</button>
+        </div>
+      </section>
+
+      <!-- STEP 4 -->
+      <section class="step" id="step4">
+        <div class="success-icon">✓</div>
+        <h1 style="text-align:center;">Request received</h1>
+        <p class="success-text">Thanks. We’ve received your request and will contact you shortly.</p>
+        <div class="summary-box" id="summaryBox"></div>
+        <p class="success-note">
+          If this is urgent and you don’t hear from us within a few minutes, call <strong>0458 893 888</strong>.
+        </p>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <a href="tel:0458893888">0458 893 888</a> · Melbourne & Surrounds
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      var formData = {
+        service: "", phone: "", location: "", name: "",
+        manufacturer: "", model: "", year: "", startType: "", extraNotes: ""
+      };
+
+      function goToStep(n) {
+        var steps = document.querySelectorAll(".step");
+        for (var i = 0; i < steps.length; i++) {
+          steps[i].classList.remove("active");
+        }
+        var target = document.getElementById("step" + n);
+        if (target) target.classList.add("active");
+        var bar = document.getElementById("progressBar");
+        if (bar) bar.style.width = (n / 4 * 100) + "%";
+        window.scrollTo(0, 0);
+      }
+
+      var optionBtns = document.querySelectorAll(".option-btn");
+      for (var i = 0; i < optionBtns.length; i++) {
+        optionBtns[i].onclick = function() {
+          formData.service = this.getAttribute("data-value");
+          goToStep(2);
+        };
+      }
+
+      document.getElementById("backTo1").onclick = function() { goToStep(1); };
+
+      document.getElementById("radioPush").onclick = function() {
+        this.classList.add("selected");
+        document.getElementById("radioTurn").classList.remove("selected");
+        this.querySelector("input").checked = true;
+        formData.startType = "Push start";
+      };
+      document.getElementById("radioTurn").onclick = function() {
+        this.classList.add("selected");
+        document.getElementById("radioPush").classList.remove("selected");
+        this.querySelector("input").checked = true;
+        formData.startType = "Turn key start";
+      };
+
+      document.getElementById("toStep3").onclick = function() {
+        var manufacturer = document.getElementById("manufacturer").value.trim();
+        var model = document.getElementById("model").value.trim();
+        var year = document.getElementById("year").value.trim();
+        var valid = true;
+
+        function showErr(id, msg) {
+          var el = document.getElementById(id);
+          el.textContent = msg;
+          el.classList.add("show");
+          valid = false;
+        }
+        function hideErr(id) {
+          document.getElementById(id).classList.remove("show");
+        }
+
+        if (!manufacturer) showErr("manufacturerError", "Please enter the manufacturer");
+        else hideErr("manufacturerError");
+        if (!model) showErr("modelError", "Please enter the model");
+        else hideErr("modelError");
+        if (!year) showErr("yearError", "Please enter the year");
+        else hideErr("yearError");
+        if (!formData.startType) showErr("startTypeError", "Please select the start type");
+        else hideErr("startTypeError");
+
+        if (!valid) return;
+
+        formData.manufacturer = manufacturer;
+        formData.model = model;
+        formData.year = year;
+        goToStep(3);
+      };
+
+      document.getElementById("backTo2").onclick = function() { goToStep(2); };
+
+      document.getElementById("submitBtn").onclick = function() {
+        var phone = document.getElementById("phone").value.trim();
+        var location = document.getElementById("location").value.trim();
+        var valid = true;
+
+        if (!phone || phone.replace(/\s/g, "").length < 8) {
+          document.getElementById("phoneError").textContent = "Please enter a valid phone number";
+          document.getElementById("phoneError").classList.add("show");
+          valid = false;
+        } else {
+          document.getElementById("phoneError").classList.remove("show");
+        }
+
+        if (!location || location.length < 5) {
+          document.getElementById("locationError").textContent = "Please enter the job location";
+          document.getElementById("locationError").classList.add("show");
+          valid = false;
+        } else {
+          document.getElementById("locationError").classList.remove("show");
+        }
+
+        if (!valid) return;
+
+        formData.phone = phone;
+        formData.location = location;
+        formData.name = document.getElementById("name").value.trim();
+        formData.extraNotes = document.getElementById("extraNotes").value.trim();
+
+        var btn = document.getElementById("submitBtn");
+        btn.textContent = "Sending...";
+        btn.disabled = true;
+
+        var payload = {
+          _subject: "New Job Request – " + formData.service,
+          service: formData.service,
+          phone: formData.phone,
+          location: formData.location,
+          name: formData.name || "Not provided",
+          manufacturer: formData.manufacturer,
+          model: formData.model,
+          year: formData.year,
+          startType: formData.startType,
+          extraNotes: formData.extraNotes || "None"
+        };
+
+        fetch("https://formspree.io/f/myegbeev", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
+        }).then(function() {
+          showConfirmation();
+        }).catch(function() {
+          showConfirmation();
+        });
+      };
+
+      function showConfirmation() {
+        var box = document.getElementById("summaryBox");
+        box.innerHTML =
+          "<div><strong>Service:</strong> " + formData.service + "</div>" +
+          "<div><strong>Phone:</strong> " + formData.phone + "</div>" +
+          "<div><strong>Location:</strong> " + formData.location + "</div>" +
+          "<div><strong>Vehicle:</strong> " + formData.manufacturer + " " + formData.model + " " + formData.year + "</div>" +
+          "<div><strong>Start type:</strong> " + formData.startType + "</div>";
+        goToStep(4);
+      }
+
+      goToStep(1);
+    })();
+  </script>
+</body>
+</html>
