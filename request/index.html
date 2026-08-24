@@ -5,176 +5,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Tenacity Locksmiths – Request Service</title>
   <meta name="theme-color" content="#1e3a8a" />
-  <meta name="description" content="Request automotive locksmith service quickly – Tenacity Locksmiths Melbourne" />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --blue: #1e3a8a;
+      --blue-dark: #1e40af;
+      --bg: #f1f5f9;
+      --white: #ffffff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --error: #dc2626;
+      --success: #16a34a;
+      --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+    .app {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+    }
+    .header {
+      background: var(--blue);
+      color: white;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo {
+      width: 44px; height: 44px;
+      background: white; color: var(--blue);
+      font-weight: 800; font-size: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 10px;
+    }
+    .brand { font-weight: 700; font-size: 1.05rem; }
+    .tagline { font-size: 0.8rem; opacity: 0.9; margin-top: 2px; }
+    .progress-container { height: 4px; background: #e2e8f0; }
+    .progress-bar { height: 100%; background: #3b82f6; width: 25%; transition: width 0.3s; }
+    .main { flex: 1; padding: 24px 20px 40px; }
+    .step { display: none; }
+    .step.active { display: block; }
+    h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+    .subtitle { color: var(--text-light); font-size: 0.95rem; margin-bottom: 22px; }
+    .option-group { margin-bottom: 24px; }
+    .group-title {
+      font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.5px; color: var(--text-light); margin-bottom: 10px;
+    }
+    .option-btn {
+      width: 100%; padding: 16px 18px;
+      background: var(--white); border: 2px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 10px;
+      font-size: 1.05rem; font-weight: 500; color: var(--text);
+      cursor: pointer; text-align: center;
+    }
+    .option-btn:active { border-color: var(--blue); background: #eff6ff; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 7px; }
+    .required { color: var(--error); }
+    .optional { font-weight: 400; color: var(--text-light); font-size: 0.85rem; }
+    input, textarea {
+      width: 100%; padding: 14px 16px;
+      border: 2px solid var(--border); border-radius: 10px;
+      font-size: 1rem; font-family: inherit;
+    }
+    input:focus, textarea:focus { outline: none; border-color: var(--blue); }
+    .error-msg { color: var(--error); font-size: 0.85rem; margin-top: 5px; display: none; }
+    .error-msg.show { display: block; }
+    .radio-group { display: flex; flex-direction: column; gap: 10px; }
+    .radio-card {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px; border: 2px solid var(--border);
+      border-radius: var(--radius); cursor: pointer;
+    }
+    .radio-card.selected { border-color: var(--blue); background: #eff6ff; }
+    .radio-title { font-weight: 600; font-size: 1.05rem; }
+    .radio-desc { font-size: 0.85rem; color: var(--text-light); }
+    .nav-buttons { display: flex; gap: 12px; margin-top: 26px; }
+    .btn {
+      flex: 1; padding: 15px 18px; border-radius: 10px;
+      font-size: 1.05rem; font-weight: 600; border: none; cursor: pointer;
+    }
+    .btn-primary { background: var(--blue); color: white; }
+    .btn-primary:disabled { background: #94a3b8; }
+    .btn-secondary { background: var(--bg); color: var(--text); border: 2px solid var(--border); }
+    .success-icon {
+      width: 70px; height: 70px; background: #dcfce7; color: var(--success);
+      font-size: 2rem; font-weight: 700; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 10px auto 18px;
+    }
+    .success-text { text-align: center; color: var(--text-light); margin-bottom: 20px; }
+    .summary-box { background: var(--bg); border-radius: var(--radius); padding: 16px; margin-bottom: 20px; font-size: 0.95rem; }
+    .summary-box div { margin-bottom: 6px; }
+    .success-note { text-align: center; font-size: 0.9rem; color: var(--text-light); }
+    .footer {
+      text-align: center; padding: 14px; font-size: 0.85rem;
+      color: var(--text-light); border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  </style>
 </head>
 <body>
   <div class="app">
-    <!-- Header -->
     <header class="header">
       <div class="logo">T</div>
-      <div class="header-text">
+      <div>
         <div class="brand">TENACITY LOCKSMITHS</div>
         <div class="tagline">Automotive Specialist · Mobile Service</div>
       </div>
     </header>
 
-    <!-- Progress bar -->
     <div class="progress-container">
       <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <!-- Main content -->
-    <main class="main" id="mainContent">
+    <main class="main">
 
-      <!-- ========== STEP 1: What do you need? ========== -->
-      <section class="step active" id="step1" data-step="1">
+      <!-- STEP 1 -->
+      <section class="step active" id="step1">
         <h1>What do you need?</h1>
         <p class="subtitle">Select the option that best describes your situation</p>
 
         <div class="option-group">
           <h2 class="group-title">Emergency</h2>
-          
-          <button class="option-btn" data-value="I'm locked out" data-category="Emergency">
-            <span class="option-text">I'm locked out</span>
-          </button>
-
-          <button class="option-btn" data-value="I've lost my keys" data-category="Emergency">
-            <span class="option-text">I've lost my keys</span>
-          </button>
-
-          <button class="option-btn" data-value="Keys locked in vehicle" data-category="Emergency">
-            <span class="option-text">Keys locked in vehicle</span>
-          </button>
-        </div>
-
-        <div class="option-group">
-          <h2 class="group-title">I need a Key</h2>
-
-          <button class="option-btn" data-value="I need a spare key" data-category="Key">
-            <span class="option-text">I need a spare key</span>
-          </button>
-
-          <button class="option-btn" data-value="I have no keys" data-category="Key">
-            <span class="option-text">I have no keys</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- ========== STEP 2: Contact & Location ========== -->
-      <section class="step" id="step2" data-step="2">
-        <h1>Your contact details</h1>
-        <p class="subtitle">We need these so we can reach you and find the job</p>
-
-        <div class="form-group">
-          <label for="phone">Phone number <span class="required">*</span></label>
-          <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" inputmode="tel" required />
-          <div class="error-msg" id="phoneError"></div>
-        </div>
-
-        <div class="form-group">
-          <label for="location">Job location / Address <span class="required">*</span></label>
-          <textarea id="location" name="location" rows="3" placeholder="Street address, suburb, or nearest landmark" required></textarea>
-          <div class="error-msg" id="locationError"></div>
-        </div>
-
-        <div class="form-group">
-          <label for="name">Your name or Dealership name <span class="optional">(optional)</span></label>
-          <input type="text" id="name" name="name" placeholder="e.g. John or ABC Toyota" />
-        </div>
-
-        <div class="nav-buttons">
-          <button class="btn btn-secondary" id="backToStep1">Back</button>
-          <button class="btn btn-primary" id="toStep3">Continue</button>
-        </div>
-      </section>
-
-      <!-- ========== STEP 3: Vehicle details ========== -->
-      <section class="step" id="step3" data-step="3">
-        <h1>Vehicle details</h1>
-        <p class="subtitle">This helps us bring the right equipment</p>
-
-        <div class="form-group">
-          <label for="manufacturer">Manufacturer <span class="required">*</span></label>
-          <input type="text" id="manufacturer" name="manufacturer" placeholder="e.g. Toyota, Holden, Ford, BMW" required />
-          <div class="error-msg" id="manufacturerError"></div>
-        </div>
-
-        <div class="form-group">
-          <label for="model">Model & Year <span class="required">*</span></label>
-          <input type="text" id="model" name="model" placeholder="e.g. Hilux 2019, Commodore 2015" required />
-          <div class="error-msg" id="modelError"></div>
-        </div>
-
-        <div class="form-group">
-          <label>Start type <span class="required">*</span></label>
-          <div class="radio-group">
-            <label class="radio-card">
-              <input type="radio" name="startType" value="Push start" />
-              <span class="radio-content">
-                <span class="radio-title">Push start</span>
-                <span class="radio-desc">Button start / keyless</span>
-              </span>
-            </label>
-            <label class="radio-card">
-              <input type="radio" name="startType" value="Turn key start" />
-              <span class="radio-content">
-                <span class="radio-title">Turn key start</span>
-                <span class="radio-desc">Traditional key ignition</span>
-              </span>
-            </label>
-          </div>
-          <div class="error-msg" id="startTypeError"></div>
-        </div>
-
-        <div class="nav-buttons">
-          <button class="btn btn-secondary" id="backToStep2">Back</button>
-          <button class="btn btn-primary" id="toStep4">Continue</button>
-        </div>
-      </section>
-
-      <!-- ========== STEP 4: Specific problem ========== -->
-      <section class="step" id="step4" data-step="4">
-        <h1>What’s the problem?</h1>
-        <p class="subtitle" id="problemSubtitle">Select the closest description</p>
-
-        <div id="problemOptions">
-          <!-- Options will be injected by JavaScript -->
-        </div>
-
-        <div class="form-group" style="margin-top: 20px;">
-          <label for="extraNotes">Anything else we should know? <span class="optional">(optional)</span></label>
-          <textarea id="extraNotes" name="extraNotes" rows="3" placeholder="Extra details that might help..."></textarea>
-        </div>
-
-        <div class="nav-buttons">
-          <button class="btn btn-secondary" id="backToStep3">Back</button>
-          <button class="btn btn-primary" id="submitRequest">Submit Request</button>
-        </div>
-      </section>
-
-      <!-- ========== STEP 5: Confirmation ========== -->
-      <section class="step" id="step5" data-step="5">
-        <div class="success-icon">✓</div>
-        <h1>Request received</h1>
-        <p class="success-text">
-          Thanks. We’ve received your request and will contact you shortly on the number you provided.
-        </p>
-        <div class="summary-box" id="summaryBox">
-          <!-- Summary injected by JS -->
-        </div>
-        <p class="success-note">
-          If this is an urgent emergency and you don’t hear from us within a few minutes, please call us directly on <strong>0458 893 888</strong>.
-        </p>
-      </section>
-
-    </main>
-
-    <footer class="footer">
-      <a href="tel:0458893888">0458 893 888</a> · Melbourne & Surrounds
-    </footer>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+          <button type="button" class="option-btn" data-value="I'm locked out">I'm locked out</button>
+          <button type="button" class="option
