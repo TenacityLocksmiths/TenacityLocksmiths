@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tenacitylocksmiths.com.au/sitemap.xml

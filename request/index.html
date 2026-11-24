@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Tenacity Locksmiths – Request Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Request a Mobile Car Locksmith | Tenacity Locksmiths</title>
+  <meta name="description" content="Request a mobile car locksmith online. Tell us your car, key problem and suburb and we will call back with a time. Inner, north and west Melbourne." />
   <meta name="theme-color" content="#1e3a8a" />
+  <link rel="canonical" href="https://tenacitylocksmiths.com.au/request/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tenacity Locksmiths" />
+  <meta property="og:title" content="Request a Mobile Car Locksmith | Tenacity Locksmiths" />
+  <meta property="og:description" content="Request a mobile car locksmith online. Tell us your car, key problem and suburb and we will call back with a time. Inner, north and west Melbourne." />
+  <meta property="og:url" content="https://tenacitylocksmiths.com.au/request/" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
   <style>
     :root {
       --blue: #1e3a8a;
@@ -115,16 +124,37 @@
       color: var(--text-light); border-top: 1px solid var(--border);
     }
     .footer a { color: var(--blue); font-weight: 600; text-decoration: none; }
+    /* ===== Review edits: R1 call bar, R2 home link, H13 accessibility ===== */
+    body { padding-top: 56px; padding-top: calc(56px + env(safe-area-inset-top)); }
+    .call-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 56px; padding: env(safe-area-inset-top) 16px 0;
+      background: #facc15; color: #111827;
+      font-size: 1.15rem; font-weight: 800; letter-spacing: 0.2px;
+      text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .call-bar:hover, .call-bar:focus { background: #fde047; }
+    .call-bar:focus-visible { outline: 3px solid #111827; outline-offset: -3px; }
+    .home-link { display: flex; align-items: center; gap: 14px; color: inherit; text-decoration: none; min-height: 44px; }
+    .tagline, .group-title, .optional, .error-msg, .radio-desc, .footer { font-size: 0.875rem; }
+    fieldset.radio-fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+    fieldset.radio-fieldset legend { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 7px; padding: 0; }
+    .radio-card input { width: 20px; height: 20px; margin-top: 3px; flex-shrink: 0; }
+    .footer a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; }
   </style>
 </head>
 <body>
+  <a class="call-bar" href="tel:+61458893888">Call or text 0458 893 888</a>
   <div class="app">
     <header class="header">
-      <div class="logo">T</div>
-      <div>
-        <div class="brand">TENACITY LOCKSMITHS</div>
-        <div class="tagline">Automotive Specialist · Mobile Service</div>
-      </div>
+      <a href="/" class="home-link" aria-label="Tenacity Locksmiths – back to home page">
+        <div class="logo">T</div>
+        <div>
+          <div class="brand">TENACITY LOCKSMITHS</div>
+          <div class="tagline">← Back to home · Mobile car locksmith</div>
+        </div>
+      </a>
     </header>
 
     <div class="progress-container">
@@ -162,41 +192,43 @@
         <p class="subtitle">This helps us bring the right equipment</p>
 
         <div class="form-group">
-          <label>Manufacturer <span class="required">*</span></label>
-          <input type="text" id="manufacturer" placeholder="e.g. Toyota, Holden, Ford, BMW" />
+          <label for="manufacturer">Manufacturer <span class="required">*</span></label>
+          <input type="text" id="manufacturer" required aria-describedby="manufacturerError" placeholder="e.g. Toyota, Holden, Ford, BMW" />
           <div class="error-msg" id="manufacturerError"></div>
         </div>
 
         <div class="form-group">
-          <label>Model <span class="required">*</span></label>
-          <input type="text" id="model" placeholder="e.g. Hilux, Commodore, Ranger" />
+          <label for="model">Model <span class="required">*</span></label>
+          <input type="text" id="model" required aria-describedby="modelError" placeholder="e.g. Hilux, Commodore, Ranger" />
           <div class="error-msg" id="modelError"></div>
         </div>
 
         <div class="form-group">
-          <label>Year <span class="required">*</span></label>
-          <input type="text" id="year" placeholder="e.g. 2019" inputmode="numeric" />
+          <label for="year">Year <span class="required">*</span></label>
+          <input type="text" id="year" required aria-describedby="yearError" placeholder="e.g. 2019" inputmode="numeric" />
           <div class="error-msg" id="yearError"></div>
         </div>
 
         <div class="form-group">
-          <label>Start type <span class="required">*</span></label>
+          <fieldset class="radio-fieldset" aria-describedby="startTypeError">
+          <legend>Start type <span class="required">*</span></legend>
           <div class="radio-group">
-            <div class="radio-card" id="radioPush">
-              <input type="radio" name="startType" value="Push start" />
-              <div>
-                <div class="radio-title">Push start</div>
-                <div class="radio-desc">Button start / keyless</div>
-              </div>
-            </div>
-            <div class="radio-card" id="radioTurn">
-              <input type="radio" name="startType" value="Turn key start" />
-              <div>
-                <div class="radio-title">Turn key start</div>
-                <div class="radio-desc">Traditional key ignition</div>
-              </div>
-            </div>
+            <label class="radio-card" id="radioPush" for="startPush">
+              <input type="radio" name="startType" id="startPush" value="Push start" />
+              <span>
+                <span class="radio-title" style="display:block;">Push start</span>
+                <span class="radio-desc" style="display:block;">Button start / keyless</span>
+              </span>
+            </label>
+            <label class="radio-card" id="radioTurn" for="startTurn">
+              <input type="radio" name="startType" id="startTurn" value="Turn key start" />
+              <span>
+                <span class="radio-title" style="display:block;">Turn key start</span>
+                <span class="radio-desc" style="display:block;">Traditional key ignition</span>
+              </span>
+            </label>
           </div>
+          </fieldset>
           <div class="error-msg" id="startTypeError"></div>
         </div>
 
@@ -211,24 +243,24 @@
         <p class="subtitle">So we can reach you and find the job</p>
 
         <div class="form-group">
-          <label>Phone number <span class="required">*</span></label>
-          <input type="tel" id="phone" placeholder="04XX XXX XXX" inputmode="tel" />
+          <label for="phone">Phone number <span class="required">*</span></label>
+          <input type="tel" id="phone" autocomplete="tel" required aria-describedby="phoneError" placeholder="04XX XXX XXX" inputmode="tel" />
           <div class="error-msg" id="phoneError"></div>
         </div>
 
         <div class="form-group">
-          <label>Job location / Address <span class="required">*</span></label>
-          <textarea id="location" rows="3" placeholder="Street address, suburb, or nearest landmark"></textarea>
+          <label for="location">Job location / Address <span class="required">*</span></label>
+          <textarea id="location" required aria-describedby="locationError" rows="3" placeholder="Street address, suburb, or nearest landmark"></textarea>
           <div class="error-msg" id="locationError"></div>
         </div>
 
         <div class="form-group">
-          <label>Your name or Dealership <span class="optional">(optional)</span></label>
-          <input type="text" id="name" placeholder="e.g. John or ABC Toyota" />
+          <label for="name">Your name or Dealership <span class="optional">(optional)</span></label>
+          <input type="text" id="name" autocomplete="name" placeholder="e.g. John or ABC Toyota" />
         </div>
 
         <div class="form-group">
-          <label>Anything else we should know? <span class="optional">(optional)</span></label>
+          <label for="extraNotes">Anything else we should know? <span class="optional">(optional)</span></label>
           <textarea id="extraNotes" rows="2" placeholder="Extra details..."></textarea>
         </div>
 
@@ -245,14 +277,14 @@
         <p class="success-text">Thanks. We’ve received your request and will contact you shortly.</p>
         <div class="summary-box" id="summaryBox"></div>
         <p class="success-note">
-          If this is urgent and you don’t hear from us within a few minutes, call <strong>0458 893 888</strong>.
+          If this is urgent and you don’t hear from us within a few minutes, call <a href="tel:+61458893888"><strong>0458 893 888</strong></a>. Public hours Monday–Friday 8:00am–5:30pm. After hours: emergency by arrangement.
         </p>
       </section>
 
     </main>
 
     <footer class="footer">
-      <a href="tel:0458893888">0458 893 888</a> · Melbourne & Surrounds
+      <a href="tel:+61458893888">0458 893 888</a> · Inner, north &amp; west Melbourne · <a href="/">Home</a>
     </footer>
   </div>
 
