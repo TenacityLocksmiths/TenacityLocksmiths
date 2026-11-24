@@ -405,7 +405,7 @@
     .services-more { text-align: center; margin-top: 24px; color: var(--text-light); }
     .services-more a { display: inline-block; padding: 10px 4px; color: var(--blue); font-weight: 600; text-decoration: underline; }
     .areas { background: var(--white); }
-    .areas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 900px; margin: 0 auto; }
+    .areas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 960px; margin: 0 auto; }
     .area-group { border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
     .area-group h3 { font-size: 1.05rem; color: var(--blue); margin-bottom: 6px; }
     .area-group p { color: var(--text-light); }
@@ -416,6 +416,7 @@
     @media (max-width: 600px) {
       .header-phone { display: none; }
       .site-nav { width: 100%; }
+      .areas-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -542,16 +543,16 @@
       <h2 class="section-title">Areas we cover</h2>
       <p class="section-subtitle">Mobile car locksmith covering the Melbourne CBD plus inner, northern and western Melbourne. We come to your car at home, work or the roadside.</p>
       <div class="areas-grid">
-        <div class="area-group"><h3>Inner south &amp; Stonnington</h3><p>St Kilda, Port Melbourne, South Yarra, Prahran, Richmond</p></div>
-        <div class="area-group"><h3>Inner north</h3><p>Melbourne CBD, Carlton, Fitzroy, Northcote, Brunswick, Coburg</p></div>
-        <div class="area-group"><h3>Northern suburbs</h3><p>South Morang, Epping</p></div>
-        <div class="area-group"><h3>Western suburbs</h3><p>Flemington, Moonee Ponds, Essendon, Footscray, Sunshine, Altona, Melton</p></div>
+        <div class="area-group"><h3>CBD, inner south &amp; Stonnington</h3><p>Melbourne CBD, Docklands, Southbank, West Melbourne, East Melbourne, South Melbourne, Albert Park, Middle Park, Port Melbourne, St Kilda, Elwood, St Kilda East, Balaclava, Windsor, Prahran, South Yarra, Toorak, Richmond</p></div>
+        <div class="area-group"><h3>Inner north</h3><p>North Melbourne, Parkville, Carlton, Carlton North, Fitzroy, Fitzroy North, Clifton Hill, Collingwood, Abbotsford, Brunswick, Brunswick East, Brunswick West, Northcote, Coburg, Coburg North</p></div>
+        <div class="area-group"><h3>Northern suburbs</h3><p>Thornbury, Preston, Reservoir, Kingsbury, Bundoora, Mill Park, Thomastown, Lalor, Epping, South Morang, Mernda, Doreen, Wollert, Pascoe Vale, Pascoe Vale South, Hadfield, Glenroy, Oak Park, Fawkner, Broadmeadows, Westmeadows, Greenvale, Campbellfield, Roxburgh Park, Craigieburn</p></div>
+        <div class="area-group"><h3>Western suburbs</h3><p>Kensington, Flemington, Ascot Vale, Moonee Ponds, Essendon, Essendon North, Aberfeldie, Strathmore, Niddrie, Airport West, Tullamarine, Maribyrnong, Avondale Heights, Maidstone, Braybrook, Footscray, West Footscray, Seddon, Yarraville, Spotswood, Newport, Williamstown, Altona North, Altona, Seaholme, Sunshine, Sunshine North, Sunshine West, Albion, St Albans, Keilor East, Keilor, Keilor Downs, Deer Park, Cairnlea, Caroline Springs, Hillside, Taylors Lakes, Sydenham, Rockbank, Melton</p></div>
       </div>
       <p class="services-more">Not sure if we reach you? Call or text <a href="tel:+61458893888">0458 893 888</a> or see <a href="/service-areas/">all service areas</a>.</p>
     </div>
   </section>
 
-  <section id="faq"> <div class="container"> <h2 class="section-title">Frequently asked questions</h2> <p class="section-subtitle">Quick answers for car keys, lockouts and mobile service across Melbourne.</p> <div class="faq-list"> <details> <summary>Do you cover South Morang, Coburg, St Kilda and other Melbourne suburbs?</summary> <p>Yes. We cover the Melbourne CBD and inner, northern and western Melbourne: St Kilda, Port Melbourne, South Yarra, Prahran, Richmond, Carlton, Fitzroy, Northcote, Brunswick, Coburg, Flemington, Moonee Ponds, Essendon, Footscray, Sunshine, Altona, Melton, South Morang and Epping. Call or text <a href="tel:+61458893888">0458 893 888</a>.</p> </details> <details> <summary>What are your public hours?</summary> <p>Public hours Monday–Friday 8:00am–5:30pm. Saturday and Sunday are closed. After hours: emergency by arrangement.</p> </details> <details> <summary>Can you replace or program car keys?</summary> <p>Yes. We specialise in car key replacement, keys cut to code, and transponder, remote and smart key programming for most makes and models.</p> </details> <details> <summary>Can you help if I’m locked out of my car?</summary> <p>Yes. Damage-free vehicle lockouts — we come to you at home, work or roadside.</p> </details> <details> <summary>Do you cut keys to code?</summary> <p>Yes — we cut keys to code on site for most vehicle makes and models.</p> </details> <details> <summary>Do you repair car locks or extract broken keys?</summary> <p>Yes. We repair jammed or worn car door, boot and ignition locks and safely extract broken keys from ignitions and door locks.</p> </details> <details> <summary>How do I book?</summary> <p>Call or text <a href="tel:+61458893888">0458 893 888</a>, email <a href="mailto:tenacitylocksmiths@gmail.com">tenacitylocksmiths@gmail.com</a>, or use <a href="/request/">Request Service</a> on the website.</p> </details> </div> </div> </section>  <!-- CONTACT -->
+  <section id="faq"> <div class="container"> <h2 class="section-title">Frequently asked questions</h2> <p class="section-subtitle">Quick answers for car keys, lockouts and mobile service across Melbourne.</p> <div class="faq-list"> <details> <summary>Do you cover South Morang, Coburg, St Kilda and other Melbourne suburbs?</summary> <p>Yes. We cover the Melbourne CBD and inner, northern and western Melbourne, including South Melbourne, Thomastown, Lalor, Epping, South Morang and the other suburbs listed under Areas we cover. See <a href="/service-areas/">all service areas</a> or call or text <a href="tel:+61458893888">0458 893 888</a>.</p> </details> <details> <summary>What are your public hours?</summary> <p>Public hours Monday–Friday 8:00am–5:30pm. Saturday and Sunday are closed. After hours: emergency by arrangement.</p> </details> <details> <summary>Can you replace or program car keys?</summary> <p>Yes. We specialise in car key replacement, keys cut to code, and transponder, remote and smart key programming for most makes and models.</p> </details> <details> <summary>Can you help if I’m locked out of my car?</summary> <p>Yes. Damage-free vehicle lockouts — we come to you at home, work or roadside.</p> </details> <details> <summary>Do you cut keys to code?</summary> <p>Yes — we cut keys to code on site for most vehicle makes and models.</p> </details> <details> <summary>Do you repair car locks or extract broken keys?</summary> <p>Yes. We repair jammed or worn car door, boot and ignition locks and safely extract broken keys from ignitions and door locks.</p> </details> <details> <summary>How do I book?</summary> <p>Call or text <a href="tel:+61458893888">0458 893 888</a>, email <a href="mailto:tenacitylocksmiths@gmail.com">tenacitylocksmiths@gmail.com</a>, or use <a href="/request/">Request Service</a> on the website.</p> </details> </div> </div> </section>  <!-- CONTACT -->
   <section id="contact">
     <div class="container">
       <div class="contact-box">
@@ -600,87 +601,403 @@
     "https://g.page/r/CcKMGd-RK_UQEAI/review"
   ],
   "areaServed": [
-    {
-      "@type": "Place",
-      "name": "Melbourne CBD, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Melton, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Altona, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Coburg, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Epping, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Carlton, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Fitzroy, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Prahran, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Essendon, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Richmond, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "St Kilda, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Sunshine, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Brunswick, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Footscray, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Northcote, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Flemington, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "South Yarra, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Moonee Ponds, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "South Morang, VIC, Australia"
-    },
-    {
-      "@type": "Place",
-      "name": "Port Melbourne, VIC, Australia"
-    }
-  ],
+        {
+          "@type": "Place",
+          "name": "Melbourne CBD, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Docklands, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Southbank, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "West Melbourne, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "East Melbourne, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "South Melbourne, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Albert Park, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Middle Park, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Port Melbourne, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "St Kilda, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Elwood, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "St Kilda East, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Balaclava, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Windsor, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Prahran, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "South Yarra, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Toorak, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Richmond, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "North Melbourne, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Parkville, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Carlton, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Carlton North, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Fitzroy, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Fitzroy North, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Clifton Hill, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Collingwood, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Abbotsford, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Brunswick, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Brunswick East, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Brunswick West, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Northcote, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Coburg, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Coburg North, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Thornbury, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Preston, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Reservoir, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Kingsbury, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Bundoora, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Mill Park, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Thomastown, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Lalor, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Epping, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "South Morang, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Mernda, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Doreen, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Wollert, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Pascoe Vale, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Pascoe Vale South, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Hadfield, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Glenroy, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Oak Park, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Fawkner, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Broadmeadows, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Westmeadows, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Greenvale, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Campbellfield, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Roxburgh Park, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Craigieburn, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Kensington, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Flemington, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Ascot Vale, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Moonee Ponds, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Essendon, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Essendon North, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Aberfeldie, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Strathmore, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Niddrie, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Airport West, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Tullamarine, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Maribyrnong, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Avondale Heights, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Maidstone, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Braybrook, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Footscray, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "West Footscray, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Seddon, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Yarraville, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Spotswood, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Newport, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Williamstown, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Altona North, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Altona, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Seaholme, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Sunshine, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Sunshine North, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Sunshine West, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Albion, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "St Albans, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Keilor East, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Keilor, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Keilor Downs, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Deer Park, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Cairnlea, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Caroline Springs, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Hillside, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Taylors Lakes, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Sydenham, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Rockbank, VIC, Australia"
+        },
+        {
+          "@type": "Place",
+          "name": "Melton, VIC, Australia"
+        }
+      ],
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
